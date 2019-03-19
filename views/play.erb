@@ -1,4 +1,10 @@
 <%= erb :head %>
 <h1><%= @name1 %> vs. <%= @name2 %></h1>
-<%= @name2 %>: <span id='player-2-hp'>60</span>HP
+<%= @name2 %>: <span id='player-2-hp'><%= @hp_p2 %></span>HP
+<form action='/attack'>
+  <input type='submit' value='HADOKEN!'> 
+</form>
+<div id='feedback'>
+  <%= @feedback %>
+</div>
 <%= erb :foot %>

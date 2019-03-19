@@ -24,4 +24,13 @@ feature 'Testing infrastructure' do
     # here's what the walkthrough suggests:
     expect(page).to have_content "#{@name2}: 60HP"
   end
+
+  # As Player 1,
+  # So I can win a game of Battle,
+  # I want to attack Player 2, and I want to get a confirmation
+  scenario "Player 1 can attack player 2" do
+    sign_in_and_play(@name1, @name2)
+    click_button('HADOKEN!')
+    expect(page).to have_content "#{@name1} attacked #{@name2}"
+  end
 end
