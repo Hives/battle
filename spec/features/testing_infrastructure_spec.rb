@@ -33,4 +33,14 @@ feature 'Testing infrastructure' do
     click_button('HADOKEN!')
     expect(page).to have_content "#{@name1} attacked #{@name2}"
   end
+
+  # As Player 1,
+  # So I can start to win a game of Battle,
+  # I want my attack to reduce Player 2's HP by 10
+  scenario "Attacking player 2 reduces their HP by 10" do
+    sign_in_and_play(@name1, @name2)
+    click_button('HADOKEN!')
+    expect(page).to have_content "#{@name2}: 50HP"
+  end
+
 end
