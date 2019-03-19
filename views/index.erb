@@ -1,0 +1,15 @@
+<%= erb :head %>
+<h1>Battle!</h1>
+<h2>Enter player names to start</h2>
+<form action='/names' method='post'>
+    <label for='name1'>
+        Player 1:
+    </label>
+    <input type='text' name='name1'>
+    <label for='name2'>
+        Player 2:
+    </label>
+    <input type='text' name='name2'>
+    <input type='submit' value='OK'>
+</form>
+<%= erb :foot %>
