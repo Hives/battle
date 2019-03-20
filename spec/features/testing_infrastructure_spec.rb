@@ -22,7 +22,12 @@ feature 'Testing infrastructure' do
     # the specific code? better to test the content rather than the specific
     # html?
     # here's what the walkthrough suggests:
-    expect(page).to have_content "#{@name2}: 60HP"
+    expect(page).to have_content "#{@name2} (60HP)"
+  end
+  # also for player 1...
+  scenario "you can see player 1's hit points too" do
+    sign_in_and_play(@name1, @name2)
+    expect(page).to have_content "#{@name1} (60HP)"
   end
 
   # As Player 1,
