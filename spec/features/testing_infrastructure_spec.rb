@@ -40,7 +40,7 @@ feature 'Testing infrastructure' do
   scenario "Attacking player 2 reduces their HP by 10" do
     sign_in_and_play(@name1, @name2)
     click_button('HADOKEN!')
-    expect(page).to have_content "#{@name2}: 50HP"
+    expect(page).to have_content "#{@name2}: 50 HP"
   end
 
 end

@@ -1,9 +1,14 @@
 <%= erb :head %>
-<h1><%= @name1 %> attacked <%= @name2 %></h1>
+<h1><%= @game.player1.name %> attacked <%= @game.player2.name %></h1>
 <p>
-  <%= @name2 %>: <span id='player-2-hp'><%= @hp_p2 %></span>HP
+<%= @game.player2.name %>: <span id='player-2-hp'>
+  <%= @game.player2.hitpoints %>
+</span>HP
 </p>
 <p>
   <strong>THAT'S GOTTA HURT</strong>
 </p>
+
+<a href='/play'>Go another round</a>
+
 <%= erb :foot %>
