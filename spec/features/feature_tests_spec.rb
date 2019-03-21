@@ -1,4 +1,4 @@
-feature 'Testing infrastructure' do
+feature 'Playing a game of Battle' do
   before do
     @name1, @name2 = "Ken", "Ryu"
   end
@@ -14,7 +14,7 @@ feature 'Testing infrastructure' do
   # As Player 1,
   # So I can see how close I am to winning
   # I want to see Player 2's Hit Points
-  scenario "Player 1 can see Player 2's hit points" do
+  scenario "the players can see player 2's hitpoints" do
     sign_in_and_play(@name1, @name2)
     # this is what I came up with:
     # expect(page.find("#player-2-hp")).to have_content('60')
@@ -22,12 +22,12 @@ feature 'Testing infrastructure' do
     # the specific code? better to test the content rather than the specific
     # html?
     # here's what the walkthrough suggests:
-    expect(page).to have_content "#{@name2} (60HP)"
+    expect(page).to have_content "#{@name2}: 60HP"
   end
   # also for player 1...
-  scenario "you can see player 1's hit points too" do
+  scenario "the players can see player 1's hitpoints too" do
     sign_in_and_play(@name1, @name2)
-    expect(page).to have_content "#{@name1} (60HP)"
+    expect(page).to have_content "#{@name1}: 60HP"
   end
 
   # As Player 1,
@@ -46,6 +46,25 @@ feature 'Testing infrastructure' do
     sign_in_and_play(@name1, @name2)
     click_button('HADOKEN!')
     expect(page).to have_content "#{@name2}: 50 HP"
+  end
+
+  # As two Players,
+  # So we can continue our game of Battle,
+  # We want to switch turns
+  scenario "Player 1 is prompted to go first" do
+    sign_in_and_play(@name1, @name2)
+    expect(page).to have_content "#{@name1}, what do you want to do?"
+  end
+  scenario "Player 2 is prompted to go second" do
+    sign_in_and_play(@name1, @name2)
+    hadoken_and_continue
+    expect(page).to have_content "#{@name2}, what do you want to do?"
+  end
+  scenario "Player 1 is prompted to go third" do
+    sign_in_and_play(@name1, @name2)
+    hadoken_and_continue
+    hadoken_and_continue
+    expect(page).to have_content "#{@name1}, what do you want to do?"
   end
 
 end

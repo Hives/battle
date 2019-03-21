@@ -5,3 +5,7 @@ html {
 h1 {
   color: red;
 }
+
+img.player-2 {
+  transform: scaleX(-1);
+}

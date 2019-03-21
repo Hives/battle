@@ -20,4 +20,52 @@ describe Game do
       game.attack(game.player1, 10)
     end
   end
+
+  describe '#increment_turn' do
+    it 'increments the turn counter' do
+      expect { game.increment_turn }.to change { game.turn }.by(1)
+    end
+  end
+
+  describe '#current_player' do
+    context "when initialised" do
+      it 'returns player 1' do
+        expect(game.current_player).to eq player1
+      end
+    end
+    context "after turn counter incremented once" do
+      it 'returns player 2' do
+        game.increment_turn
+        expect(game.current_player).to eq player2
+      end
+    end
+    context "after turn counter incremented twice" do
+      it 'returns player 1' do
+        2.times { game.increment_turn }
+        expect(game.current_player).to eq player1
+      end
+    end
+    context "after turn counter incremented three times" do
+      it 'returns player 2' do
+        3.times { game.increment_turn }
+        expect(game.current_player).to eq player2
+      end
+    end
+  end
+
+  describe '#other_player' do
+    context "when initialised" do
+      it 'returns player 2' do
+        expect(game.other_player).to eq player2
+      end
+    end
+
+    context "after turn counter incremented once" do
+      it 'returns player 1' do
+        game.increment_turn
+        expect(game.other_player).to eq player1
+      end
+    end
+  end
+
 end

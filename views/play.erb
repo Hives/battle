@@ -1,17 +1,26 @@
 <%= erb :head %>
 <h1>
-  <%= @game.player1.name %> (<%= @game.player1.hitpoints %> HP)
-  vs.
-  <%= @game.player2.name %>
+  <%= @game.player1.name %> vs. <%= @game.player2.name %>
 </h1>
-<p>
-  <%= @game.player2.name %>:
-  <span id='player-2-hp'><%= @game.player2.hitpoints %></span>HP
-</p>
+
+<div class="hitpoints">
+  <p>
+    <%= @game.player2.name %>:
+    <span id='player-2-hp'><%= @game.player2.hitpoints %></span>HP
+  </p>
+  <p>
+    <%= @game.player1.name %>:
+    <span id='player-1-hp'><%= @game.player1.hitpoints %></span>HP
+  </p>
+</div>
+
+<%= @game.current_player.name %>, what do you want to do?
 <form action='/attack'>
   <input type='submit' value='HADOKEN!'> 
 </form>
+
 <div id='feedback'>
   <%= @feedback %>
 </div>
+
 <%= erb :foot %>
